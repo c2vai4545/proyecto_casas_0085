@@ -61,6 +61,12 @@ const casasRemate = [
   },
 ];
 
+const sections = [
+  { title: "Encuentra la casa ideal para ti", id: "houses-list" },
+  { title: "Casas en oferta", id: "houses-offer" },
+  { title: "Casas en remate", id: "houses-remate" },
+];
+
 const renderHouses = (array, section) => {
   let housesHTML = "";
 
@@ -92,6 +98,29 @@ const renderHouses = (array, section) => {
   const housesList = document.querySelector(section);
   housesList.innerHTML = housesHTML;
 };
+
+const renderSections = () => {
+  const main = document.querySelector("main");
+  let html = "";
+  for (const section of sections) {
+    const sectionHTML = `
+        <section>
+        <h2 class="pb-2 border-bottom">${section.title}</h2>
+        <div
+          id="${section.id}"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3"
+        >
+          <!-- vacio -->
+        </div>
+      </section>`;
+    html += sectionHTML;
+  }
+
+  main.innerHTML += html;
+};
+
+// creamos nuestras secciones
+renderSections();
 
 // llamado de funcion
 renderHouses(casas, "#houses-list");
